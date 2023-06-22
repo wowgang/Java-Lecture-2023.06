@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Ex04_FullAge {
 
 	public static void main(String[] args) {
-		String[] birth = "1994-06-24".split("-");
+		String[] birth = "1994-06-24".split("-");	// String array
 		int year = Integer.parseInt(birth[0]);
 		int month = Integer.parseInt(birth[1]);
 		int day = Integer.parseInt(birth[2]);
@@ -16,7 +16,10 @@ public class Ex04_FullAge {
 		
 		// 오늘 날짜 구하는방법
 		LocalDate today = LocalDate.now();
-		System.out.printf("%d-%02d-%02d\n",today.getYear(),today.getMonthValue(),today.getDayOfMonth());
+		int tYear = today.getYear();
+		int tMonth = today.getMonthValue();
+		int tDay = today.getDayOfMonth();
+		System.out.printf("%d-%02d-%02d\n",tYear,tMonth,tDay);
 		
 		
 		Scanner scan = new Scanner(System.in);
@@ -26,15 +29,15 @@ public class Ex04_FullAge {
 		
 		scan.close();
 		
-		if (today.getMonthValue() < month) {
-			age = today.getYear() - year -1;
-		} else if (today.getMonthValue() > month) {
-			age = today.getYear() - year;
+		if (tMonth < month) {
+			age = tYear - year -1;
+		} else if (tMonth > month) {
+			age = tYear - year;
 		} else {
-			if (today.getDayOfMonth() < day) {
-				age = today.getYear() - year -1;
+			if (tDay < day) {
+				age = tYear - year -1;
 			} else {
-				age = today.getYear() - year;
+				age = tYear - year;
 			}
 		}
 		System.out.println("만" + age + " 입니다." );

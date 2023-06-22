@@ -10,8 +10,7 @@ public class Ex03_Alarm {
 				
 		Scanner scan = new Scanner(System.in);
 		
-		int h;
-		int m;
+		int h, m;
 		
 		System.out.print("시간을 입력하세요: ");
 		h = Integer.parseInt(scan.nextLine());
@@ -33,7 +32,10 @@ public class Ex03_Alarm {
 			if (h == 0)
 				seth = 23;
 		}
-		System.out.println(seth + "시" + setm + "분");
+		System.out.printf("%02d:%02d", seth, setm);
+//		System.out.println(seth + "시" + setm + "분");
+		
+		
 		
 		
 		
