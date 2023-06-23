@@ -71,39 +71,44 @@ public class Pq02 {
 		Scanner scanner = new Scanner(System.in);
 		
 		while(run) {
-			System.out.println("-------------------------------------------");
+			System.out.println("------------------------------------------------------");
 			System.out.println("1.학생수 | 2.점수입력 | 3.점수리스트 | 4.분석 | 5.종료");
-			System.out.println("-------------------------------------------");
+			System.out.println("------------------------------------------------------");
 			System.out.println("선택> ");
 			
 			int selectNo = Integer.parseInt(scanner.nextLine());
+						
 			
-//			Scanner scan = new Scanner(System.in);
-//			String text = "";
-//			for (int i=0; i<5; i++) {
-//				System.out.print("입력> ");
-//				String line = scan.nextLine();
-//				text += line + " ";
-			
-			
-			Scanner scan = new Scanner(System.in);
-			int inputdata = 0;
 			if (selectNo == 1) {
-				System.out.println("학생수 입력> ");
-				int students = scan.nextInt();  
+				System.out.print("학생수 입력> ");
+				studentNum = Integer.parseInt(scanner.nextLine());
+				scores = new int[studentNum];
 			} else if (selectNo == 2) {
-				System.out.println("점수 입력> ");
-//				int[] scores = scan.nextInt();
+				for (int i=0; i <scores.length; i++) {
+				System.out.print("scores[" + i + "]> ");
+				scores[i] = Integer.parseInt(scanner.nextLine());
+				}
 			} else if (selectNo == 3) {
-				System.out.println("점수 리스트> ");
-				
+				for (int i=0; i <scores.length; i++) {
+					System.out.println("scores[" + i + "]> : " + scores[i]);
+				}
 			} else if (selectNo == 4) {
-				System.out.println("분석 > ");
+				int max2 = 0;
+				int sum2 = 0;
+				double avg2 = 0;
+				for (int i = 0; i <scores.length; i++) {
+					max2 = (max2 < scores[i]) ? scores[i] : max2;
+					sum2 += scores[i];
+				}
+				avg2 = (double) sum2 / studentNum;
+				System.out.println("최고 점수 : " + max2);
+				System.out.println("평균 점수 : " + avg2);
 			} else if (selectNo == 5) {
 				run = false;
-			}
-		}
+				}
+		}// while
 		System.out.println("프로그램종료");
+		
 	} // public static
 
 }
