@@ -1,6 +1,6 @@
-package ch06;
+package ch06_class;
 
-public class Member {
+public class Ex02_Member {
 
 	// 속성, 필드
 	private String name;
@@ -9,18 +9,18 @@ public class Member {
 	
 	// 생성자 함수
 	// source -> Generate contructor using fields
-	public Member() { }
-	public Member(String name) {
+	public Ex02_Member() { }
+	public Ex02_Member(String name) {
 		super();
 		this.name = name;
 	}
-	public Member(String name, int age) {
+	public Ex02_Member(String name, int age) {
 		super();
 		this.name = name;
 		if (age >= 0 && age <=150)
 		this.age = age;
 	}
-	public Member(String name, int age, String email) {
+	public Ex02_Member(String name, int age, String email) {
 		super();
 		this.name = name;
 		this.age = age;

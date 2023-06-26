@@ -1,4 +1,4 @@
-package ch06;
+package ch06_class;
 
 public class Ex01_Interaction {
 

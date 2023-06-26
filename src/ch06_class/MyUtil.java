@@ -1,4 +1,4 @@
-package ch06;
+package ch06_class;
 
 public class MyUtil {
 //	public MyUtil() { } // Java가 알아서 만들어 줌 , 생략가능
