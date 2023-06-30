@@ -11,10 +11,13 @@ public class Student {
 		this.name = name;
 	}
 	
+	// public이라서 getter/setter가 꼭 필요하지않음
+	
 	@Override
 	public int hashCode() {
-//		return Objects.hash(studentNum);
-		return studentNum;
+//		return Objects.hash(studentNum);  이것 보다는 아래와같이 작성하는것을 권장
+		return this.studentNum;
+//		return studentNum;
 	}
 	
 	@Override
@@ -22,7 +25,7 @@ public class Student {
 		if (!(obj instanceof Student)) 
 			return false;
 		Student student = (Student) obj;
-		return this.studentNum == student.studentNum;
+		return this.studentNum == student.studentNum;	// 학번이 같음
 	}
 	
 	

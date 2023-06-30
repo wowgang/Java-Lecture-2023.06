@@ -7,7 +7,8 @@ import java.util.Set;
 public class HashSetExample {
 
 	public static void main(String[] args) {
-		Set<Student> set = new HashSet<Student>();
+//		Set<Student> set = new HashSet<Student>();
+		Set<Student> set = new HashSet<>();
 		
 		set.add(new Student(1, "홍길동"));
 		set.add(new Student(2, "최가람"));

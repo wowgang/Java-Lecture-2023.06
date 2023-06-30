@@ -1,5 +1,8 @@
 package ch13_collection.quiz;
 
+// 필드,생성자,Tostring 만드는곳 
+
+
 public class Board {
 	private String title;
 	private String content;

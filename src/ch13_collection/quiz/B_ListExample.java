@@ -2,7 +2,9 @@ package ch13_collection.quiz;
 
 import java.util.List;
 
-public class ListExample {
+// 리시트 만들어서 출력방식? 저장해둔곳
+
+public class B_ListExample {
 
 	public static void main(String[] args) {
 		BoardDao dao = new BoardDao();
