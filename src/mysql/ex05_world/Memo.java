@@ -32,6 +32,13 @@ package mysql.ex05_world;
 
 
 
+/*
+users(타입) get user  = >  return users , 파라미터(String uid)
+List<users>(타입) get users List  (int num, int offset) # offset은 기본값이 0이다 
+void register user (users user)
+void update user (users user)
+void delete user (string uid)
+*/
 
 public class Memo {
 
