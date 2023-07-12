@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,24 +56,45 @@ public class ReplyDao {
 	deleteReply type "void" parameter "int rid"
 	*/
 	
-	public Reply getReply(int rid) {
-		return null;
-	}
-	
 //	private int rid;
 //	private String comment;
 //	private LocalDateTime regTime;
 //	private String uid;
 //	private int bid;
-	public List<Reply> getReplyList(int rid, int offset) {
-		List<Reply> list = new ArrayList<Reply>();
+	
+	public Reply getReply(int rid) {
+		Reply r = null;
 		Connection conn = myConnection();
-		String sql = "select * from reply where rid=? limit ?";
+		String sql = "select * from replay where rid=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, rid);
-			pstmt.setInt(2, offset);
 			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				r = new Reply(rs.getInt(1), rs.getString(2), 
+						LocalDateTime.parse(rs.getString(3).replace(" ","T")), 
+						rs.getString(4), rs.getInt(6));
+			}
+			rs.close(); pstmt.close(); conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return r;
+	}
+	
+
+	public List<Reply> getReplyList() {
+		List<Reply> list = new ArrayList<Reply>();
+		Connection conn = myConnection();
+		//public List<Reply> getReplyList(int rid, int offset)
+		//String sql = "select * from reply where rid=? limit ?";
+		String sql = "select * from reply order by bid desc, rid desc";
+		try {
+			//PreparedStatement pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, rid);
+//			pstmt.setInt(2, offset);
+			Statement pstmt = conn.createStatement();
+			ResultSet rs = pstmt.executeQuery(sql);
 			while (rs.next()) {
 				Reply r = new Reply(rs.getInt(1), rs.getString(2),
 						LocalDateTime.parse(rs.getString(3).replace(" ", "T")),
@@ -100,6 +122,32 @@ public class ReplyDao {
 			e.printStackTrace();
 			
 		}
+	}
+	
+	public void updateReply(Reply r) {
+		Connection conn = myConnection();
+		String sql = "update reply set comment=?, regTime=NOW(), uid=? where rid=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, r.getComment());
+			pstmt.setString(2, r.getUid());
+			pstmt.setInt(3, r.getRid());pstmt.executeUpdate();
+			pstmt.close(); conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteReply(int rid) {
+		Connection conn = myConnection();
+		String sql = "delete from reply where rid=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rid);
+			pstmt.executeUpdate();
+			pstmt.close(); conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();		}
 	}
 	
 }
