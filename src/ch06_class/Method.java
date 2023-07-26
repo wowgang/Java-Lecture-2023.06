@@ -19,5 +19,26 @@ public class Method {
 	//	double divide (int x, int y) {}
 	//	double result = double(10,20)
 	
+	public static void callByName() {
+		System.out.println("메서드 이름만으로 호출");
 	
+	}
+	
+	public static void callByvalue(int n) {
+		n = 100;
+		System.out.println("callByBalu:");
+		System.out.println("값을 전달하면서 호출");
+	}
+	
+//	public static void callByValue(String n) {
+//		n = "hello";
+	public static void callByValue(int[] n) {
+		n[0] = 100;
+		System.out.println("참조값을 전달하면서 호출");
+		//callByReference라고도 표현함
+	}
+	
+	public static void main(String[] arg) {
+		int n =1;
+	}
 }
